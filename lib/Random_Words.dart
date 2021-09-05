@@ -49,10 +49,18 @@ class RandomWordsState extends State<RandomWords> {
           setState(() {
             if (alreadySaved) {
               _savedPairs.remove(pair);
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('Removed from Favourites'),
+              ));
             }
             else {
               _savedPairs.add(pair);
+
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('Added to Favourites'),
+              ));
             }
+
           }
           );
         }
@@ -73,7 +81,7 @@ class RandomWordsState extends State<RandomWords> {
             ListTile.divideTiles(tiles: tiles, context: context).toList();
 
         return Scaffold(
-          appBar: AppBar(title: Text("Favourites")),
+          appBar: AppBar(title: Text("Favourites", style: TextStyle(fontSize: 18.0, color: Colors.purple)) ),
           body: ListView(children: divided)
         );
 
